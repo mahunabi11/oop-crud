@@ -10,32 +10,56 @@
 </head>
 <body>
 	
-	
+	<?php
+	 /**
+	  * Student data manage
+	  */
+       
+        if(isset($_POST['submit'])){
+        	$name = $_POST['name'];
+        	$email = $_POST['email'];
+        	$cell = $_POST ['cell'];
+        	// Photo manage
+        	$photo = $_FILES['photo'];
 
-	<div class="wrap shadow">
+        	 if(empty($name) || empty($email) || empty($cell)){
+        	 	$mess = "<p class='alert alert-danger'>Empty Fields Requierd !<button class='close' data-dismiss='alert'>&times;</button></p>";
+        	 }elseif(filter_var($email, FILTER_VALIDATE_EMAIL)==false){
+        	 	$mess = "<p class='alert alert-warning'>Valid Email Requierd !<button class='close' data-dismiss='alert'>&times;</button></p>";
+        	 }
+        }
+
+	?>
+
+	<div class="wrap ">
 		<a class="btn btn-primary" href="data.php">All Students</a>
 		<div class="card">
-			<div class="card-body">
+			<div class="card-body shadow">
 				<h2>Sign Up</h2>
-				<form action="">
+				  <?php
+                     if(isset($mess)){
+                     	echo $mess;
+                     }
+				  ?>
+				<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="">Name</label>
-						<input class="form-control" type="text">
+						<input name="name" class="form-control" type="text">
 					</div>
 					<div class="form-group">
 						<label for="">Email</label>
-						<input class="form-control" type="text">
+						<input name="email" class="form-control" type="text">
 					</div>
 					<div class="form-group">
 						<label for="">Cell</label>
-						<input class="form-control" type="text">
+						<input name="cell" class="form-control" type="text">
 					</div>
 					<div class="form-group">
-						<label for="">Username</label>
-						<input class="form-control" type="text">
+						<label for="">Photo</label>
+						<input name="photo" class="form-control" type="file">
 					</div>
 					<div class="form-group">
-						<input class="btn btn-primary" type="submit" value="Sign Up">
+						<input name="submit" class="btn btn-primary" type="submit" value="Sign Up">
 					</div>
 				</form>
 			</div>
