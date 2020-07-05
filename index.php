@@ -1,3 +1,17 @@
+<?php require_once "vendor/autoload.php"; ?>
+<?php  
+	
+	// Class use
+	use App\Controller\Student;
+
+
+
+	// class instance 
+  $student = new Student;
+  
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +40,8 @@
         	 	$mess = "<p class='alert alert-danger'>Empty Fields Requierd !<button class='close' data-dismiss='alert'>&times;</button></p>";
         	 }elseif(filter_var($email, FILTER_VALIDATE_EMAIL)==false){
         	 	$mess = "<p class='alert alert-warning'>Valid Email Requierd !<button class='close' data-dismiss='alert'>&times;</button></p>";
+        	 }else{
+        	 	$student -> addStudent($name, $email, $cell, $photo );
         	 }
         }
 
