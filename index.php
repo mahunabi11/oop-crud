@@ -41,7 +41,7 @@
         	 }elseif(filter_var($email, FILTER_VALIDATE_EMAIL)==false){
         	 	$mess = "<p class='alert alert-warning'>Valid Email Requierd !<button class='close' data-dismiss='alert'>&times;</button></p>";
         	 }else{
-        	 	$student -> addStudent($name, $email, $cell, $photo );
+        	   $mess =	$student -> addStudent($name, $email, $cell, $photo );
         	 }
         }
 
