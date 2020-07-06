@@ -27,7 +27,7 @@
 
      // File upload management
 
-       public function fileUpload($file, $location = '', array $file_type = ['png', 'jpg'])
+       protected function fileUpload($file, $location = '', array $file_type = ['png', 'jpg'])
        {
            // file info
 
@@ -75,7 +75,31 @@
         	return true;
         }
  	 }
- 
+ // All data show method
+ protected function all($table, $order_by)
+ {
+    
+ 	   $sql = "SELECT * FROM $table ORDER BY id $order_by";
+ 	  $query = $this ->connection() ->query ($sql);
+
+        if ($query) {
+        	return $query;
+        }
+     }
+
+     /**
+      * Data delete method
+      */
+     public function delete($table, $id)
+     {
+     	 $sql = "DELETE  FROM $table WHERE id =  '$id'";
+ 	  $data = $this ->connection() ->query ($sql);
+
+        if ($data) {
+        	return true;
+        }
+     }
+
  }
 
 ?>

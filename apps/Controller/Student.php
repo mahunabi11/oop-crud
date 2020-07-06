@@ -26,6 +26,27 @@
        	return $mess = "<p class='alert alert-success'>Data Added Successful !<button class='close' data-dismiss='alert'>&times;</button></p>";
        }
     } 
+
+    public function allStudents()
+    {
+     $data = $this -> all('oop_obj', 'DESC');
+      if($data){
+      	return $data;
+      }
+    }
+
+    /**
+     * Data delete method
+     */
+
+    public function dataDelete($id)
+    {
+    	$data = $this -> delete('oop_obj', $id);
+
+    	if($data){
+    		return  "<p class='alert alert-info'>Data Deleted Successful !<button class='close' data-dismiss='alert'>&times;</button></p>";
+    	}
+    }
  }
 
 ?> 
