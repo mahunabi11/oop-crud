@@ -90,7 +90,7 @@
      /**
       * Data delete method
       */
-     public function delete($table, $id)
+     protected function delete($table, $id)
      {
      	 $sql = "DELETE  FROM $table WHERE id =  '$id'";
  	  $data = $this ->connection() ->query ($sql);
@@ -99,6 +99,20 @@
         	return true;
         }
      }
+
+     /**
+      * Single data view
+      */
+    protected function find($table, $id)
+    {
+        	 $sql = "SELECT *  FROM $table WHERE id =  '$id'";
+ 	        $data = $this ->connection() ->query ($sql);
+
+        if ($data) {
+        	return $data -> fetch_assoc();
+        }
+    }
+
 
  }
 

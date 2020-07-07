@@ -13,9 +13,11 @@
 
   if(isset($_GET['id'])){
   	$id = $_GET['id'];
+  	
+  	$mess = $student -> dataDelete($id);
   }
   
- $mess = $student ->dataDelete($id);
+ 
 
 ?>
 <!DOCTYPE html>
@@ -69,7 +71,7 @@
 							<td><?php echo $stu['cell']; ?></td>
 							<td><img src="media/img/students/<?php echo $stu['photo']; ?>" alt=""></td>
 							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-info" href="view.php?id=<?php echo $stu['id']; ?>">View</a>
 								<a class="btn btn-sm btn-warning" href="#">Edit</a>
 								<a id="delete" class="btn btn-sm btn-danger" href="?id=<?php echo $stu['id']; ?>">Delete</a>
 							</td>

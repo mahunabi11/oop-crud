@@ -44,8 +44,16 @@
     	$data = $this -> delete('oop_obj', $id);
 
     	if($data){
-    		return  "<p class='alert alert-info'>Data Deleted Successful !<button class='close' data-dismiss='alert'>&times;</button></p>";
+    		return  "<p class='alert alert-success'>Data Deleted Successful !<button class='close' data-dismiss='alert'>&times;</button></p>";
     	}
+    }
+
+    // Single data view method
+
+    public function singleStuView($id)
+    {
+    	$data = $this ->find('oop_obj', $id);
+    	return $data;
     }
  }
 
